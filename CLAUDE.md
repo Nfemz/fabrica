@@ -4,16 +4,160 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Hytale plugin template for building Java-based server plugins. It uses Gradle with automatic Hytale server JAR detection and IDE run configuration generation.
+**Fabrica** is a factory automation mod for Hytale - from steam age to quantum tech. It uses Gradle with automatic Hytale server JAR detection and IDE run configuration generation.
 
 **Early Access Warning**: Hytale is in Early Access. APIs are subject to breaking changes.
+
+---
+
+## Quick Start: Development → Test → Play Loop
+
+This is the primary workflow for making changes and testing them in-game.
+
+### Prerequisites
+
+1. **Java 25 SDK** installed and configured
+2. **Hytale launcher** installed with the game downloaded
+3. `hytale_home` path set correctly in `gradle.properties` (currently: `/mnt/c/Users/femia/AppData/Roaming/Hytale`)
+
+### Step 1: Make Code Changes
+
+Edit files in `src/main/java/io/fabrica/`:
+- `FabricaPlugin.java` - Plugin entry point, lifecycle hooks
+- `FabricaCommand.java` - The `/fabrica` command implementation
+
+### Step 2: Build the Plugin
+
+```bash
+./gradlew build
+```
+
+This compiles the plugin and outputs to `build/libs/Fabrica-<version>.jar`.
+
+The build automatically:
+- Syncs `manifest.json` with version from `gradle.properties`
+- Compiles against the local Hytale server JAR
+
+### Step 3: Run the Development Server
+
+**Option A: IntelliJ IDEA (Recommended)**
+1. Open project in IntelliJ
+2. Gradle auto-generates `HytaleServer` run configuration
+3. Click Run (green play button) on the `HytaleServer` configuration
+
+**Option B: VS Code**
+```bash
+./gradlew generateVSCodeLaunch
+```
+Then use the generated `.vscode/launch.json` to run.
+
+**Option C: Command Line**
+```bash
+cd run
+java -cp "/mnt/c/Users/femia/AppData/Roaming/Hytale/install/release/package/game/latest/Server/HytaleServer.jar" \
+  com.hypixel.hytale.Main \
+  --allow-op --disable-sentry \
+  --assets="/mnt/c/Users/femia/AppData/Roaming/Hytale/install/release/package/game/latest/Assets.zip" \
+  --mods="../src/main/resources"
+```
+
+### Step 4: First-Time Server Authentication
+
+On first run, you must authenticate in the server console:
+```
+auth login device
+```
+Follow the device code flow, then persist credentials:
+```
+auth persistence Encrypted
+```
+
+### Step 5: Connect and Test In-Game
+
+1. Launch the Hytale client
+2. Connect to server address: `127.0.0.1`
+3. Test the plugin with: `/fabrica`
+
+### Step 6: Iterate
+
+1. Stop the server (Ctrl+C or stop in IDE)
+2. Make code changes
+3. Run `./gradlew build`
+4. Restart the server
+5. Reconnect and test
+
+---
+
+## LLM Development Guidelines
+
+When working on this codebase as an AI assistant:
+
+### Before Making Changes
+1. Read the relevant source files first
+2. Check `manifest.json` Main class matches actual plugin class (`io.fabrica.FabricaPlugin`)
+3. Understand the plugin lifecycle: constructor → preLoad → setup → start → shutdown
+
+### After Making Changes
+1. Run `./gradlew build` to verify compilation
+2. Check for errors in build output
+3. If user wants to test: remind them to restart the server and reconnect
+
+### Common Tasks
+
+| Task | Command/Action |
+|------|----------------|
+| Add a new command | Create class extending `CommandBase`, register in `FabricaPlugin.setup()` |
+| Add an event listener | Use `getEventRegistry().register()` in `setup()` |
+| Add a block/item | Create JSON in `src/main/resources/Server/Item/Items/` |
+| Run tests | `./gradlew test` |
+| Full rebuild | `./gradlew clean build` |
+| Check for compile errors | `./gradlew compileJava` |
+
+### File Locations
+
+| Purpose | Path |
+|---------|------|
+| Plugin code | `src/main/java/io/fabrica/` |
+| Plugin manifest | `src/main/resources/manifest.json` |
+| Asset definitions | `src/main/resources/Server/` |
+| Build output | `build/libs/Fabrica-<version>.jar` |
+| Server working dir | `run/` |
+| Version config | `gradle.properties` |
+
+---
+
+## Deployment
+
+### Local Testing (Single Player)
+
+The development server described above is the primary testing method.
+
+### Distributing to Others
+
+1. Build the JAR:
+   ```bash
+   ./gradlew build
+   ```
+2. Output: `build/libs/Fabrica-<version>.jar`
+3. Recipients install by placing the JAR in their `UserData/Mods/` folder within their Hytale installation
+
+### Multiplayer Server Deployment
+
+1. Build with `./gradlew build`
+2. Copy `build/libs/Fabrica-<version>.jar` to the server's plugins directory
+3. Restart the server
+
+> **Note**: If you add external dependencies later, you'll need to configure the Shadow plugin for fat JARs. Currently all dependencies come from the Hytale server itself.
+
+---
 
 ## Build Commands
 
 ```bash
-./gradlew build              # Standard build
-./gradlew shadowJar          # Create distributable JAR with dependencies
-./gradlew test               # Run tests
+./gradlew build                 # Standard build (compiles + packages JAR)
+./gradlew compileJava           # Compile only (fast check for errors)
+./gradlew clean build           # Full clean rebuild
+./gradlew test                  # Run tests
 ./gradlew updatePluginManifest  # Sync manifest.json with gradle.properties
 ./gradlew generateVSCodeLaunch  # Generate .vscode/launch.json
 ```
@@ -404,6 +548,49 @@ LOGGER.atInfo().log("Information message");
 LOGGER.atWarning().log("Warning message");
 LOGGER.atSevere().withCause(exception).log("Error occurred");
 ```
+
+---
+
+## Troubleshooting
+
+### Build Fails
+
+| Error | Solution |
+|-------|----------|
+| "Could not find HytaleServer.jar" | Check `hytale_home` in `gradle.properties` points to correct Hytale installation |
+| "Java 25 required" | Install Java 25 SDK, ensure `JAVA_HOME` is set |
+| Compilation errors | Check import statements match Hytale API packages |
+
+### Server Won't Start
+
+| Issue | Solution |
+|-------|----------|
+| "Port already in use" | Stop other servers, or change port in server config |
+| "Assets not found" | Verify `--assets` path in run configuration |
+| Authentication errors | Run `auth login device` in server console |
+
+### Plugin Not Loading
+
+| Issue | Solution |
+|-------|----------|
+| Plugin not detected | Check `manifest.json` is in JAR at root level |
+| "Main class not found" | Verify `Main` in `manifest.json` matches fully qualified class name |
+| Version mismatch | Ensure `ServerVersion` in manifest is `*` or matches server version |
+
+### In-Game Issues
+
+| Issue | Solution |
+|-------|----------|
+| Command not found | Check command registered in `setup()`, try `/help` |
+| Permission denied | Set `setPermissionGroup(GameMode.Adventure)` for all players |
+| Changes not appearing | Rebuild with `./gradlew build`, restart server, reconnect |
+
+### WSL-Specific (Your Setup)
+
+Since Hytale is installed on Windows but development is in WSL:
+- The `hytale_home` path uses `/mnt/c/...` to access Windows files
+- Server runs in WSL, client connects from Windows
+- File changes in WSL are immediately visible to the Windows filesystem
 
 ---
 
