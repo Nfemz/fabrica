@@ -1,0 +1,52 @@
+# Fabrica - Factory Automation Mod
+# English Language File
+
+# Ores
+Tin_Ore.name = Tin Ore
+Copper_Ore.name = Copper Ore
+
+# Dusts
+Iron_Dust.name = Iron Dust
+Copper_Dust.name = Copper Dust
+Tin_Dust.name = Tin Dust
+Bronze_Dust.name = Bronze Dust
+
+# Ingots
+Tin_Ingot.name = Tin Ingot
+Copper_Ingot.name = Copper Ingot
+Bronze_Ingot.name = Bronze Ingot
+
+# Machines
+Machine_Generator.name = Generator
+Machine_Generator.description = Burns solid fuel to produce 400W of power.
+
+Machine_Battery.name = Battery
+Machine_Battery.description = Stores up to 100kJ of energy. Charges at 640W, discharges at 640W.
+
+Machine_Macerator.name = Macerator
+Machine_Macerator.description = Grinds ore into dust, doubling your yield. Consumes 160W.
+
+Machine_Electric_Furnace.name = Electric Furnace
+Machine_Electric_Furnace.description = Smelts items using electricity. Consumes 160W.
+
+Machine_Cable.name = Copper Cable
+Machine_Cable.description = Transfers power between machines.
+
+Conveyor_Belt.name = Conveyor Belt
+Conveyor_Belt.description = Moves items automatically. Right-click to rotate.
+
+# UI Labels
+ui.power = Power
+ui.energy = Energy
+ui.progress = Progress
+ui.input = Input
+ui.output = Output
+ui.fuel = Fuel
+
+# Units
+unit.watts = W
+unit.kilowatts = kW
+unit.megawatts = MW
+unit.joules = J
+unit.kilojoules = kJ
+unit.megajoules = MJ

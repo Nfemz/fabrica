@@ -1,0 +1,8 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Tin_Dust.name"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Tin_Dust.png",
+  "Categories": ["Materials.Dusts"]
+}

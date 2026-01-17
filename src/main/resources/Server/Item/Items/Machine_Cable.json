@@ -1,0 +1,18 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Machine_Cable.name",
+    "Description": "server.Machine_Cable.description"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Machine_Cable.png",
+  "Categories": ["Blocks.Machines"],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Metal",
+    "Textures": [{"All": "BlockTextures/Machine_Cable.png"}],
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#b87333",
+    "Hardness": 2.0
+  }
+}

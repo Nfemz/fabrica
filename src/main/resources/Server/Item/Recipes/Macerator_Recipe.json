@@ -1,0 +1,18 @@
+{
+  "Type": "Crafting",
+  "Pattern": [
+    "FIF",
+    "IMI",
+    "ICI"
+  ],
+  "Key": {
+    "F": "Flint",
+    "I": "Iron_Ingot",
+    "M": "Machine_Generator",
+    "C": "Machine_Cable"
+  },
+  "Result": {
+    "Item": "Machine_Macerator",
+    "Count": 1
+  }
+}

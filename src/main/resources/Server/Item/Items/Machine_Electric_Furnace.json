@@ -1,0 +1,24 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Machine_Electric_Furnace.name",
+    "Description": "server.Machine_Electric_Furnace.description"
+  },
+  "MaxStack": 1,
+  "Icon": "Icons/ItemsGenerated/Machine_Electric_Furnace.png",
+  "Categories": ["Blocks.Machines"],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Metal",
+    "Textures": [
+      {
+        "Top": "BlockTextures/Machine_Furnace_Top.png",
+        "Bottom": "BlockTextures/Machine_Bottom.png",
+        "Sides": "BlockTextures/Machine_Furnace_Side.png"
+      }
+    ],
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#cc5500",
+    "Hardness": 5.0
+  }
+}

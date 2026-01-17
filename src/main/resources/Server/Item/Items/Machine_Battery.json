@@ -1,0 +1,24 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Machine_Battery.name",
+    "Description": "server.Machine_Battery.description"
+  },
+  "MaxStack": 1,
+  "Icon": "Icons/ItemsGenerated/Machine_Battery.png",
+  "Categories": ["Blocks.Machines"],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Metal",
+    "Textures": [
+      {
+        "Top": "BlockTextures/Machine_Battery_Top.png",
+        "Bottom": "BlockTextures/Machine_Bottom.png",
+        "Sides": "BlockTextures/Machine_Battery_Side.png"
+      }
+    ],
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#3366cc",
+    "Hardness": 5.0
+  }
+}

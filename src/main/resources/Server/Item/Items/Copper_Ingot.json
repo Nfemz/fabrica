@@ -1,0 +1,8 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Copper_Ingot.name"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Copper_Ingot.png",
+  "Categories": ["Materials.Ingots"]
+}

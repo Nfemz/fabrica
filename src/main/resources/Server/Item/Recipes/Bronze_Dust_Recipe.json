@@ -1,0 +1,16 @@
+{
+  "Type": "Crafting",
+  "Pattern": [
+    "CCC",
+    "CT ",
+    "   "
+  ],
+  "Key": {
+    "C": "Copper_Dust",
+    "T": "Tin_Dust"
+  },
+  "Result": {
+    "Item": "Bronze_Dust",
+    "Count": 4
+  }
+}

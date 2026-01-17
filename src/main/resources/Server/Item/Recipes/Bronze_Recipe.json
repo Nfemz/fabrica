@@ -1,0 +1,26 @@
+{
+  "Input": [
+    {
+      "ItemId": "Copper_Dust",
+      "Quantity": 3
+    },
+    {
+      "ItemId": "Tin_Dust",
+      "Quantity": 1
+    }
+  ],
+  "PrimaryOutput": {
+    "ItemId": "Bronze_Dust",
+    "Quantity": 4
+  },
+  "BenchRequirement": [
+    {
+      "Id": "Fieldcraft",
+      "Type": "Crafting",
+      "Categories": [
+        "Materials"
+      ]
+    }
+  ],
+  "Seconds": 2
+}

@@ -1,0 +1,24 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Machine_Macerator.name",
+    "Description": "server.Machine_Macerator.description"
+  },
+  "MaxStack": 1,
+  "Icon": "Icons/ItemsGenerated/Machine_Macerator.png",
+  "Categories": ["Blocks.Machines"],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Metal",
+    "Textures": [
+      {
+        "Top": "BlockTextures/Machine_Macerator_Top.png",
+        "Bottom": "BlockTextures/Machine_Bottom.png",
+        "Sides": "BlockTextures/Machine_Side.png"
+      }
+    ],
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#5a5a5a",
+    "Hardness": 5.0
+  }
+}

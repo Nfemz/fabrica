@@ -1,0 +1,8 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Bronze_Ingot.name"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Bronze_Ingot.png",
+  "Categories": ["Materials.Ingots"]
+}

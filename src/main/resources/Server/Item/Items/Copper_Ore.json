@@ -1,0 +1,17 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Copper_Ore.name"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Copper_Ore.png",
+  "Categories": ["Blocks.Ores"],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Stone",
+    "Textures": [{"All": "BlockTextures/Copper_Ore.png"}],
+    "BlockSoundSetId": "Stone",
+    "ParticleColor": "#b87333",
+    "Hardness": 3.0
+  }
+}

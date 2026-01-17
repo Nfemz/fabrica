@@ -1,0 +1,24 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Machine_Generator.name",
+    "Description": "server.Machine_Generator.description"
+  },
+  "MaxStack": 1,
+  "Icon": "Icons/ItemsGenerated/Machine_Generator.png",
+  "Categories": ["Blocks.Machines"],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Metal",
+    "Textures": [
+      {
+        "Top": "BlockTextures/Machine_Generator_Top.png",
+        "Bottom": "BlockTextures/Machine_Bottom.png",
+        "Sides": "BlockTextures/Machine_Generator_Side.png"
+      }
+    ],
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#4a4a4a",
+    "Hardness": 5.0
+  }
+}

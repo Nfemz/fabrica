@@ -1,0 +1,8 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Bronze_Dust.name"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Bronze_Dust.png",
+  "Categories": ["Materials.Dusts"]
+}

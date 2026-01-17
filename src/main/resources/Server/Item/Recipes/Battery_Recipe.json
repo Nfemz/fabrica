@@ -1,0 +1,17 @@
+{
+  "Type": "Crafting",
+  "Pattern": [
+    "TRT",
+    "TRT",
+    "CCC"
+  ],
+  "Key": {
+    "T": "Tin_Ingot",
+    "R": "Redite_Crystal",
+    "C": "Copper_Ingot"
+  },
+  "Result": {
+    "Item": "Machine_Battery",
+    "Count": 1
+  }
+}

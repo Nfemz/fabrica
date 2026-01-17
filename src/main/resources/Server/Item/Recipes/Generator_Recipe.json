@@ -1,0 +1,17 @@
+{
+  "Type": "Crafting",
+  "Pattern": [
+    "III",
+    "IFI",
+    "CCC"
+  ],
+  "Key": {
+    "I": "Iron_Ingot",
+    "F": "Furnace",
+    "C": "Copper_Ingot"
+  },
+  "Result": {
+    "Item": "Machine_Generator",
+    "Count": 1
+  }
+}

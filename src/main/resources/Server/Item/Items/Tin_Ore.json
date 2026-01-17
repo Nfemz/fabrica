@@ -1,0 +1,17 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Tin_Ore.name"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Tin_Ore.png",
+  "Categories": ["Blocks.Ores"],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Stone",
+    "Textures": [{"All": "BlockTextures/Tin_Ore.png"}],
+    "BlockSoundSetId": "Stone",
+    "ParticleColor": "#8c9c9c",
+    "Hardness": 3.0
+  }
+}

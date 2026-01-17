@@ -1,0 +1,16 @@
+{
+  "Type": "Crafting",
+  "Pattern": [
+    "LLL",
+    "CCC",
+    "LLL"
+  ],
+  "Key": {
+    "L": "Leather",
+    "C": "Copper_Ingot"
+  },
+  "Result": {
+    "Item": "Machine_Cable",
+    "Count": 8
+  }
+}

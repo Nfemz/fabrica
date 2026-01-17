@@ -1,0 +1,8 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Tin_Ingot.name"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Tin_Ingot.png",
+  "Categories": ["Materials.Ingots"]
+}

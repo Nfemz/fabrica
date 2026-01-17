@@ -1,0 +1,16 @@
+{
+  "Type": "Crafting",
+  "Pattern": [
+    "LLL",
+    "III",
+    "   "
+  ],
+  "Key": {
+    "L": "Leather",
+    "I": "Iron_Ingot"
+  },
+  "Result": {
+    "Item": "Conveyor_Belt",
+    "Count": 6
+  }
+}

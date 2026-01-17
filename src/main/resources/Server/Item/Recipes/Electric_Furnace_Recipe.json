@@ -1,0 +1,17 @@
+{
+  "Type": "Crafting",
+  "Pattern": [
+    "III",
+    "IFI",
+    "CCC"
+  ],
+  "Key": {
+    "I": "Iron_Ingot",
+    "F": "Furnace",
+    "C": "Machine_Cable"
+  },
+  "Result": {
+    "Item": "Machine_Electric_Furnace",
+    "Count": 1
+  }
+}

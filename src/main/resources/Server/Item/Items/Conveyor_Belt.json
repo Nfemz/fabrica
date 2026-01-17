@@ -1,0 +1,24 @@
+{
+  "TranslationProperties": {
+    "Name": "server.Conveyor_Belt.name",
+    "Description": "server.Conveyor_Belt.description"
+  },
+  "MaxStack": 64,
+  "Icon": "Icons/ItemsGenerated/Conveyor_Belt.png",
+  "Categories": ["Blocks.Machines"],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Metal",
+    "Textures": [
+      {
+        "Top": "BlockTextures/Conveyor_Belt_Top.png",
+        "Bottom": "BlockTextures/Machine_Bottom.png",
+        "Sides": "BlockTextures/Conveyor_Belt_Side.png"
+      }
+    ],
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#5a5a5a",
+    "Hardness": 2.0
+  }
+}
