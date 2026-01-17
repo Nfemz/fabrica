@@ -2,23 +2,118 @@
 
 Factory automation mod for Hytale - from steam age to quantum tech.
 
-## Building
+> **Note**: Hytale is in Early Access. APIs are subject to breaking changes.
+
+## Features
+
+### Power System
+- **Energy Networks**: Machines connected via cables form automatic power networks
+- **Generators**: Burn fuel to produce energy (20 FE/tick)
+- **Batteries**: Store energy for later use (10,000 FE capacity)
+- **Cables**: Transfer power between machines
+
+### Machines
+- **Macerator**: Grind ores into dust for 2x output (40 FE/tick)
+- **Electric Furnace**: Smelt items using electricity instead of fuel (30 FE/tick)
+
+### Transport
+- **Conveyor Belts**: Move items automatically between machines
+
+### Materials
+- **Ores**: Copper, Tin
+- **Dusts**: Iron, Copper, Tin, Bronze
+- **Ingots**: Copper, Tin, Bronze
+- **Components**: Cables, Batteries
+
+## Installation
+
+### Players
+1. Download the latest release from [Releases](https://github.com/Nfemz/fabrica/releases)
+2. Place `Fabrica-<version>.jar` in your Hytale `UserData/Mods/` folder
+3. Launch Hytale
+
+### Server Admins
+1. Download the JAR from releases
+2. Place in your server's mods directory
+3. Restart the server
+
+## Building from Source
+
+**Requirements**: Java 25 SDK, Hytale installed
 
 ```bash
-./gradlew build          # Standard build
-./gradlew shadowJar      # Create distributable JAR
+./gradlew build
 ```
 
 Output: `build/libs/Fabrica-<version>.jar`
 
 ## Development
 
-1. Run `HytaleServer` configuration in IntelliJ
-2. First run: authenticate with `auth login device` then `auth persistence Encrypted`
-3. Connect Hytale client to `127.0.0.1`
-4. Test with `/fabrica` command
+### Setup
+1. Clone the repository
+2. Set `hytale_home` in `gradle.properties` to your Hytale installation path
+3. Open in IntelliJ IDEA (recommended) or VS Code
 
-## Requirements
+### Running the Dev Server
 
-- Java 25 SDK
-- Hytale launcher installed
+**IntelliJ**: Run the auto-generated `HytaleServer` configuration
+
+**Command Line**:
+```bash
+cd run
+java -cp "<hytale_home>/install/release/package/game/latest/Server/HytaleServer.jar" \
+  com.hypixel.hytale.Main \
+  --allow-op --disable-sentry \
+  --assets="<hytale_home>/install/release/package/game/latest/Assets.zip" \
+  --mods="../src/main/resources"
+```
+
+### First Run
+Authenticate in the server console:
+```
+auth login device
+auth persistence Encrypted
+```
+
+### Testing
+1. Connect Hytale client to `127.0.0.1`
+2. Use `/fabrica` to verify the plugin is loaded
+3. Use `/fabrica give <item>` to spawn items
+4. Use `/fabrica power` to debug power networks
+
+## Project Structure
+
+```
+src/main/java/io/fabrica/
+├── FabricaPlugin.java      # Plugin entry point
+├── api/                    # Public API for mod integration
+│   └── power/              # Power system interfaces
+├── command/                # Chat commands
+├── machine/                # Machine implementations
+├── power/                  # Power network internals
+├── transport/              # Conveyor system
+└── ui/                     # Machine GUIs
+
+src/main/resources/
+├── manifest.json           # Plugin manifest
+├── Common/                 # Textures and UI assets
+│   ├── BlockTextures/
+│   ├── Icons/
+│   └── UI/
+└── Server/                 # Game data
+    ├── Item/Items/         # Item/block definitions
+    ├── Item/Recipes/       # Crafting recipes
+    └── Languages/          # Translations
+```
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/fabrica` | Show plugin info |
+| `/fabrica power` | Debug power network stats |
+| `/fabrica give <item>` | Give yourself a Fabrica item |
+
+## License
+
+GPL-3.0 - See [LICENSE](LICENSE) for details.
