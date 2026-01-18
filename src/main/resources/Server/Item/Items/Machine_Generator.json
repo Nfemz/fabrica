@@ -9,15 +9,8 @@
   "PlayerAnimationsId": "Block",
   "BlockType": {
     "Material": "Solid",
-    "DrawType": "Cube",
+    "DrawType": "Model",
     "HitboxType": "Full",
-    "Textures": [
-      {
-        "Up": "BlockTextures/Machine_Generator_Top.png",
-        "Down": "BlockTextures/Machine_Bottom.png",
-        "Sides": "BlockTextures/Machine_Generator_Side.png"
-      }
-    ],
     "Flags": {
       "IsUsable": true
     },
