@@ -7,9 +7,9 @@ This document covers JSON formats for blocks, items, recipes, and UI files.
 ```
 src/main/resources/
 ├── Common/
-│   ├── BlockTextures/     # 16x16 or 32x32 PNG textures
-│   ├── Icons/ItemsGenerated/
-│   └── Models/
+│   ├── Blocks/<BlockName>/  # Custom model blocks (model.blockymodel + texture.png)
+│   ├── BlockTextures/       # Cube block textures (16x16 or 32x32 PNG)
+│   └── Icons/ItemsGenerated/
 └── Server/
     ├── Block/
     ├── Item/
@@ -71,6 +71,50 @@ Set `includes_pack=true` in gradle.properties to enable asset packs.
   "ParticleColor": "#aeae8c"
 }
 ```
+
+### Model Block (Custom 3D Model)
+
+For blocks with custom 3D models (not simple cubes), use `DrawType: "Model"` with `CustomModel` and `CustomModelTexture`.
+
+**File structure:**
+```
+Common/Blocks/<BlockName>/
+├── model.blockymodel    # 3D model from Blockbench
+└── texture.png          # Texture atlas for the model
+```
+
+**Block definition** (`Server/Item/Items/Machine_Generator.json`):
+```json
+{
+  "TranslationProperties": { "Name": "server.Machine_Generator.name" },
+  "MaxStack": 1,
+  "Icon": "Icons/ItemsGenerated/Machine_Generator.png",
+  "Categories": ["Blocks.Machines"],
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "CustomModel": "Blocks/Machine_Generator/model.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Machine_Generator/texture.png"
+      }
+    ],
+    "HitboxType": "Full",
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#4a4a4a"
+  }
+}
+```
+
+**Key properties:**
+- `DrawType: "Model"` - Use custom 3D model instead of cube
+- `CustomModel` - Path to `.blockymodel` file (relative to `Common/`)
+- `CustomModelTexture` - Array of texture objects with `Weight` and `Texture` path
+- `CustomModelScale` - Optional, scale factor (e.g., `0.8` for 80% size)
+
+**IMPORTANT**: Do NOT use `Model` or `ModelId` properties - they are invalid. Only `CustomModel` works.
 
 ### Translation File
 

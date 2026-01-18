@@ -10,6 +10,13 @@
   "BlockType": {
     "Material": "Solid",
     "DrawType": "Model",
+    "CustomModel": "Blocks/Machine_Generator/model.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Machine_Generator/texture.png"
+      }
+    ],
     "HitboxType": "Full",
     "Flags": {
       "IsUsable": true
