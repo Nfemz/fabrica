@@ -13,6 +13,7 @@ For detailed documentation, see these files:
 | Plugin API | [/context/hytale-api.md](.claude/context/hytale-api.md) | Writing Java plugin code (commands, events, tasks, ECS) |
 | Asset Formats | [/context/asset-formats.md](.claude/context/asset-formats.md) | Creating blocks, items, recipes, or UI files |
 | Troubleshooting | [/context/troubleshooting.md](.claude/context/troubleshooting.md) | Debugging build, runtime, or asset errors |
+| Blockbench MCP | [/context/blockbench.md](.claude/context/blockbench.md) | Creating 3D models with Blockbench MCP tools |
 
 ---
 
