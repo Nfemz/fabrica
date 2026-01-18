@@ -5,13 +5,13 @@
   "MaxStack": 64,
   "Icon": "Icons/ItemsGenerated/Copper_Ore.png",
   "Categories": ["Blocks.Ores"],
+  "PlayerAnimationsId": "Block",
   "BlockType": {
     "Material": "Solid",
     "DrawType": "Cube",
-    "Group": "Stone",
+    "HitboxType": "Full",
     "Textures": [{"All": "BlockTextures/Copper_Ore.png"}],
     "BlockSoundSetId": "Stone",
-    "ParticleColor": "#b87333",
-    "Hardness": 3.0
+    "ParticleColor": "#b87333"
   }
 }

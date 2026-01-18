@@ -6,19 +6,19 @@
   "MaxStack": 64,
   "Icon": "Icons/ItemsGenerated/Conveyor_Belt.png",
   "Categories": ["Blocks.Machines"],
+  "PlayerAnimationsId": "Block",
   "BlockType": {
     "Material": "Solid",
     "DrawType": "Cube",
-    "Group": "Metal",
+    "HitboxType": "Full",
     "Textures": [
       {
-        "Top": "BlockTextures/Conveyor_Belt_Top.png",
-        "Bottom": "BlockTextures/Machine_Bottom.png",
+        "Up": "BlockTextures/Conveyor_Belt_Top.png",
+        "Down": "BlockTextures/Machine_Bottom.png",
         "Sides": "BlockTextures/Conveyor_Belt_Side.png"
       }
     ],
     "BlockSoundSetId": "Metal",
-    "ParticleColor": "#5a5a5a",
-    "Hardness": 2.0
+    "ParticleColor": "#5a5a5a"
   }
 }

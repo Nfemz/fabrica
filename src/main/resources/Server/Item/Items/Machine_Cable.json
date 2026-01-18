@@ -6,13 +6,13 @@
   "MaxStack": 64,
   "Icon": "Icons/ItemsGenerated/Machine_Cable.png",
   "Categories": ["Blocks.Machines"],
+  "PlayerAnimationsId": "Block",
   "BlockType": {
     "Material": "Solid",
     "DrawType": "Cube",
-    "Group": "Metal",
+    "HitboxType": "Full",
     "Textures": [{"All": "BlockTextures/Machine_Cable.png"}],
     "BlockSoundSetId": "Metal",
-    "ParticleColor": "#b87333",
-    "Hardness": 2.0
+    "ParticleColor": "#b87333"
   }
 }

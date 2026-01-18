@@ -5,13 +5,13 @@
   "MaxStack": 64,
   "Icon": "Icons/ItemsGenerated/Tin_Ore.png",
   "Categories": ["Blocks.Ores"],
+  "PlayerAnimationsId": "Block",
   "BlockType": {
     "Material": "Solid",
     "DrawType": "Cube",
-    "Group": "Stone",
+    "HitboxType": "Full",
     "Textures": [{"All": "BlockTextures/Tin_Ore.png"}],
     "BlockSoundSetId": "Stone",
-    "ParticleColor": "#8c9c9c",
-    "Hardness": 3.0
+    "ParticleColor": "#8c9c9c"
   }
 }

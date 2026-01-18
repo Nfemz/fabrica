@@ -36,10 +36,11 @@ Set `includes_pack=true` in gradle.properties to enable asset packs.
   "MaxStack": 100,
   "Icon": "Icons/ItemsGenerated/Example_Block.png",
   "Categories": ["Blocks.Rocks"],
+  "PlayerAnimationsId": "Block",
   "BlockType": {
     "Material": "Solid",
     "DrawType": "Cube",
-    "Group": "Stone",
+    "HitboxType": "Full",
     "Textures": [{"All": "BlockTextures/Example_Block.png"}],
     "BlockSoundSetId": "Stone",
     "ParticleColor": "#aeae8c"
@@ -47,14 +48,28 @@ Set `includes_pack=true` in gradle.properties to enable asset packs.
 }
 ```
 
+**Required fields for placeable blocks:**
+- `PlayerAnimationsId: "Block"` - At item level, enables block-holding animation
+- `HitboxType: "Full"` - In BlockType, makes the block solid and placeable
+```
+
 ### Per-Side Textures
 
+**IMPORTANT**: Use `Up`/`Down` for vertical faces, NOT `Top`/`Bottom`. Using `Top`/`Bottom` causes missing textures.
+
 ```json
-"Textures": [{
-  "Top": "BlockTextures/Block_Top.png",
-  "Bottom": "BlockTextures/Block_Bottom.png",
-  "Sides": "BlockTextures/Block_Sides.png"
-}]
+"BlockType": {
+  "Material": "Solid",
+  "DrawType": "Cube",
+  "HitboxType": "Full",
+  "Textures": [{
+    "Up": "BlockTextures/Block_Top.png",
+    "Down": "BlockTextures/Block_Bottom.png",
+    "Sides": "BlockTextures/Block_Sides.png"
+  }],
+  "BlockSoundSetId": "Stone",
+  "ParticleColor": "#aeae8c"
+}
 ```
 
 ### Translation File

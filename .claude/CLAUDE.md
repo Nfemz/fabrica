@@ -95,6 +95,19 @@ auth persistence Encrypted
 | UI Files | Use CSS-like `.ui` syntax, NOT JSON |
 | UI Alignment | Use `HorizontalAlignment`, NOT `Alignment` |
 | Textures | Ensure ALL referenced textures exist before testing |
+| Blocks | Must have `PlayerAnimationsId: "Block"` and `HitboxType: "Full"` to be placeable |
+
+---
+
+## Blockbench MCP (3D Modeling)
+
+Blockbench runs on Windows, Claude Code runs in WSL. The MCP connection requires the Windows host IP.
+
+**If Blockbench MCP fails to connect after reboot**, run this to update the IP:
+```bash
+NEW_IP=$(ip route show | grep -i default | awk '{print $3}') && sed -i "s|http://[0-9.]*:3000/bb-mcp|http://$NEW_IP:3000/bb-mcp|g" ~/.claude.json && echo "Updated to $NEW_IP"
+```
+Then restart Claude Code and run `/mcp`.
 
 ---
 

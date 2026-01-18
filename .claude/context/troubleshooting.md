@@ -42,7 +42,10 @@ Check client logs at: `%APPDATA%/Hytale/UserData/Logs/`
 | "Failed to validate asset" | Missing required field in recipe | Ensure Input, PrimaryOutput, Output, BenchRequirement are present |
 | Recipe not appearing in-game | Wrong BenchRequirement | Check bench Type and Id match an existing bench |
 | Block has no texture | Missing texture file | Ensure all textures referenced in BlockType.Textures exist in Common/BlockTextures/ |
-| Block can't be placed | Asset validation failed | Check client logs for specific error, often missing textures or invalid JSON |
+| Block top/bottom missing texture | Wrong face names | Use `Up`/`Down` not `Top`/`Bottom` in Textures object |
+| Block can't be placed | Missing required fields | Ensure `PlayerAnimationsId: "Block"` at item level and `HitboxType: "Full"` in BlockType |
+| Block has no "Press F" prompt | Missing IsUsable flag | Add `"Flags": { "IsUsable": true }` in BlockType |
+| No block preview in hand | Missing PlayerAnimationsId | Add `"PlayerAnimationsId": "Block"` at the item level (not inside BlockType) |
 | "Failed to load CustomUI documents" | Invalid .ui syntax or wrong file extension | Ensure files use CSS-like syntax (not JSON), use only `.ui` extension |
 | "Could not resolve expression for property Alignment" | Using `Alignment: Left` in .ui | Use `HorizontalAlignment: Left` instead |
 
@@ -83,3 +86,26 @@ Since Hytale is installed on Windows but development is in WSL:
 - Server runs in WSL, client connects from Windows
 - File changes in WSL are immediately visible to the Windows filesystem
 - Client logs are at `/mnt/c/Users/<username>/AppData/Roaming/Hytale/UserData/Logs/`
+
+### WSL2 IP Changes on Reboot
+
+WSL2 assigns a new IP to the Windows host on each reboot. This breaks MCP connections to Windows apps like Blockbench.
+
+**To fix Blockbench MCP connection after reboot:**
+
+1. Get the current Windows host IP:
+   ```bash
+   cat /etc/resolv.conf | grep nameserver | awk '{print $2}'
+   ```
+
+2. Update `~/.claude.json` - find the `blockbench` MCP server config and replace the old IP with the new one:
+   ```json
+   "args": ["mcp-remote", "http://<NEW_IP>:3000/bb-mcp"]
+   ```
+
+3. Restart Claude Code
+
+**Quick one-liner to update the IP:**
+```bash
+NEW_IP=$(ip route show | grep -i default | awk '{print $3}') && sed -i "s|http://[0-9.]*:3000/bb-mcp|http://$NEW_IP:3000/bb-mcp|g" ~/.claude.json && echo "Updated to $NEW_IP"
+```

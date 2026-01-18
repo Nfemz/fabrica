@@ -3,10 +3,10 @@ package io.fabrica;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
-
 import io.fabrica.api.FabricaAPI;
 import io.fabrica.command.PowerCommand;
 import io.fabrica.command.GiveCommand;
+import io.fabrica.event.MachineInteractionSystem;
 import io.fabrica.machine.MachineRegistry;
 import io.fabrica.power.PowerNetworkManagerImpl;
 import io.fabrica.power.PowerTicker;
@@ -154,19 +154,10 @@ public class FabricaPlugin extends JavaPlugin {
      * Registers event handlers for block placement, breaking, and interaction.
      */
     private void registerEventHandlers() {
-        // Block placement - register machine when Fabrica block is placed
-        // getEventRegistry().register(PlaceBlockEvent.class, this::onBlockPlace);
+        // Register the machine interaction system for handling block use events
+        getEntityStoreRegistry().registerSystem(new MachineInteractionSystem());
 
-        // Block breaking - unregister machine when broken
-        // getEventRegistry().register(BreakBlockEvent.class, this::onBlockBreak);
-
-        // Block interaction - open machine GUI
-        // getEventRegistry().register(UseBlockEvent.Pre.class, this::onBlockInteract);
-
-        // Note: Event handlers are commented out as they depend on the specific
-        // Hytale block/item IDs we define. Uncomment and implement when testing.
-
-        LOGGER.atInfo().log("Event handlers registered (placeholder - implement with actual block IDs)");
+        LOGGER.atInfo().log("Registered MachineInteractionSystem for block interactions");
     }
 
     /**
