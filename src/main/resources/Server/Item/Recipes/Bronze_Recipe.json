@@ -1,26 +1,10 @@
 {
   "Input": [
-    {
-      "ItemId": "Copper_Dust",
-      "Quantity": 3
-    },
-    {
-      "ItemId": "Tin_Dust",
-      "Quantity": 1
-    }
+    {"ItemId": "Copper_Dust", "Quantity": 3},
+    {"ItemId": "Tin_Dust", "Quantity": 1}
   ],
-  "PrimaryOutput": {
-    "ItemId": "Bronze_Dust",
-    "Quantity": 4
-  },
-  "BenchRequirement": [
-    {
-      "Id": "Fieldcraft",
-      "Type": "Crafting",
-      "Categories": [
-        "Materials"
-      ]
-    }
-  ],
-  "Seconds": 2
+  "PrimaryOutput": {"ItemId": "Bronze_Dust", "Quantity": 4},
+  "Output": [{"ItemId": "Bronze_Dust", "Quantity": 4}],
+  "BenchRequirement": [{"Type": "Crafting", "Id": "Fieldcraft", "Categories": ["Materials"]}],
+  "TimeSeconds": 2
 }

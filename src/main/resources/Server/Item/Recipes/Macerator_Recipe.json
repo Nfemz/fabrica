@@ -1,18 +1,12 @@
 {
-  "Type": "Crafting",
-  "Pattern": [
-    "FIF",
-    "IMI",
-    "ICI"
+  "Input": [
+    {"ItemId": "Flint", "Quantity": 2},
+    {"ItemId": "Iron_Ingot", "Quantity": 4},
+    {"ItemId": "Machine_Generator", "Quantity": 1},
+    {"ItemId": "Machine_Cable", "Quantity": 1}
   ],
-  "Key": {
-    "F": "Flint",
-    "I": "Iron_Ingot",
-    "M": "Machine_Generator",
-    "C": "Machine_Cable"
-  },
-  "Result": {
-    "Item": "Machine_Macerator",
-    "Count": 1
-  }
+  "PrimaryOutput": {"ItemId": "Machine_Macerator", "Quantity": 1},
+  "Output": [{"ItemId": "Machine_Macerator", "Quantity": 1}],
+  "BenchRequirement": [{"Type": "Crafting", "Id": "Workbench"}],
+  "TimeSeconds": 5
 }

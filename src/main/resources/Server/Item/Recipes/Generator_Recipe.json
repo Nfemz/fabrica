@@ -1,17 +1,11 @@
 {
-  "Type": "Crafting",
-  "Pattern": [
-    "III",
-    "IFI",
-    "CCC"
+  "Input": [
+    {"ItemId": "Iron_Ingot", "Quantity": 5},
+    {"ItemId": "Furnace", "Quantity": 1},
+    {"ItemId": "Copper_Ingot", "Quantity": 3}
   ],
-  "Key": {
-    "I": "Iron_Ingot",
-    "F": "Furnace",
-    "C": "Copper_Ingot"
-  },
-  "Result": {
-    "Item": "Machine_Generator",
-    "Count": 1
-  }
+  "PrimaryOutput": {"ItemId": "Machine_Generator", "Quantity": 1},
+  "Output": [{"ItemId": "Machine_Generator", "Quantity": 1}],
+  "BenchRequirement": [{"Type": "Crafting", "Id": "Workbench"}],
+  "TimeSeconds": 4
 }

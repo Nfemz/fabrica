@@ -12,7 +12,7 @@
     "Group": "Metal",
     "Textures": [
       {
-        "Top": "BlockTextures/Machine_Battery_Top.png",
+        "Top": "BlockTextures/Machine_Battery_Side.png",
         "Bottom": "BlockTextures/Machine_Bottom.png",
         "Sides": "BlockTextures/Machine_Battery_Side.png"
       }

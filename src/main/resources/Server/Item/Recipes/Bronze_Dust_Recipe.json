@@ -1,16 +1,10 @@
 {
-  "Type": "Crafting",
-  "Pattern": [
-    "CCC",
-    "CT ",
-    "   "
+  "Input": [
+    {"ItemId": "Copper_Dust", "Quantity": 4},
+    {"ItemId": "Tin_Dust", "Quantity": 1}
   ],
-  "Key": {
-    "C": "Copper_Dust",
-    "T": "Tin_Dust"
-  },
-  "Result": {
-    "Item": "Bronze_Dust",
-    "Count": 4
-  }
+  "PrimaryOutput": {"ItemId": "Bronze_Dust", "Quantity": 4},
+  "Output": [{"ItemId": "Bronze_Dust", "Quantity": 4}],
+  "BenchRequirement": [{"Type": "Crafting", "Id": "Fieldcraft", "Categories": ["Materials"]}],
+  "TimeSeconds": 2
 }

@@ -1,16 +1,10 @@
 {
-  "Type": "Crafting",
-  "Pattern": [
-    "LLL",
-    "CCC",
-    "LLL"
+  "Input": [
+    {"ItemId": "Leather", "Quantity": 6},
+    {"ItemId": "Copper_Ingot", "Quantity": 3}
   ],
-  "Key": {
-    "L": "Leather",
-    "C": "Copper_Ingot"
-  },
-  "Result": {
-    "Item": "Machine_Cable",
-    "Count": 8
-  }
+  "PrimaryOutput": {"ItemId": "Machine_Cable", "Quantity": 8},
+  "Output": [{"ItemId": "Machine_Cable", "Quantity": 8}],
+  "BenchRequirement": [{"Type": "Crafting", "Id": "Workbench"}],
+  "TimeSeconds": 2
 }

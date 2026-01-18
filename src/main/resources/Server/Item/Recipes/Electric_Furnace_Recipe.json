@@ -1,17 +1,11 @@
 {
-  "Type": "Crafting",
-  "Pattern": [
-    "III",
-    "IFI",
-    "CCC"
+  "Input": [
+    {"ItemId": "Iron_Ingot", "Quantity": 5},
+    {"ItemId": "Furnace", "Quantity": 1},
+    {"ItemId": "Machine_Cable", "Quantity": 3}
   ],
-  "Key": {
-    "I": "Iron_Ingot",
-    "F": "Furnace",
-    "C": "Machine_Cable"
-  },
-  "Result": {
-    "Item": "Machine_Electric_Furnace",
-    "Count": 1
-  }
+  "PrimaryOutput": {"ItemId": "Machine_Electric_Furnace", "Quantity": 1},
+  "Output": [{"ItemId": "Machine_Electric_Furnace", "Quantity": 1}],
+  "BenchRequirement": [{"Type": "Crafting", "Id": "Workbench"}],
+  "TimeSeconds": 4
 }

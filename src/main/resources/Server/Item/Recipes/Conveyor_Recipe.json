@@ -1,16 +1,10 @@
 {
-  "Type": "Crafting",
-  "Pattern": [
-    "LLL",
-    "III",
-    "   "
+  "Input": [
+    {"ItemId": "Leather", "Quantity": 3},
+    {"ItemId": "Iron_Ingot", "Quantity": 3}
   ],
-  "Key": {
-    "L": "Leather",
-    "I": "Iron_Ingot"
-  },
-  "Result": {
-    "Item": "Conveyor_Belt",
-    "Count": 6
-  }
+  "PrimaryOutput": {"ItemId": "Conveyor_Belt", "Quantity": 6},
+  "Output": [{"ItemId": "Conveyor_Belt", "Quantity": 6}],
+  "BenchRequirement": [{"Type": "Crafting", "Id": "Workbench"}],
+  "TimeSeconds": 2
 }

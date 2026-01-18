@@ -1,17 +1,11 @@
 {
-  "Type": "Crafting",
-  "Pattern": [
-    "TRT",
-    "TRT",
-    "CCC"
+  "Input": [
+    {"ItemId": "Tin_Ingot", "Quantity": 4},
+    {"ItemId": "Redite_Crystal", "Quantity": 2},
+    {"ItemId": "Copper_Ingot", "Quantity": 3}
   ],
-  "Key": {
-    "T": "Tin_Ingot",
-    "R": "Redite_Crystal",
-    "C": "Copper_Ingot"
-  },
-  "Result": {
-    "Item": "Machine_Battery",
-    "Count": 1
-  }
+  "PrimaryOutput": {"ItemId": "Machine_Battery", "Quantity": 1},
+  "Output": [{"ItemId": "Machine_Battery", "Quantity": 1}],
+  "BenchRequirement": [{"Type": "Crafting", "Id": "Workbench"}],
+  "TimeSeconds": 3
 }
