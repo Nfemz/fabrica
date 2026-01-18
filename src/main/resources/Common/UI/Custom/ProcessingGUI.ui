@@ -1,21 +1,21 @@
-@SlotBackground = PatchStyle(TexturePath: "Slot_Background.png");
-@ProgressEmpty = PatchStyle(TexturePath: "ProgressArrow_Empty.png");
-@EnergyEmpty = PatchStyle(TexturePath: "EnergyBar_Empty.png");
-@MachineBackground = PatchStyle(TexturePath: "MachineGUI_Background.png");
-
 Group {
     LayoutMode: Center;
-    Anchor: (Width: 176, Height: 166);
+    Anchor: (Width: 200, Height: 100);
 
-    Group #processingPanel {
-        Background: @MachineBackground;
-        Anchor: (Width: 176, Height: 166);
+    Group #ProcessingPanel {
+        Background: #000000(0.8);
+        Anchor: (Width: 200, Height: 100);
+        Padding: (Horizontal: 10, Vertical: 10);
         LayoutMode: Top;
-        Padding: (Horizontal: 8, Vertical: 6);
 
-        Label #title {
-            Style: (FontSize: 14, Alignment: Left);
+        Label #Title {
+            Style: (FontSize: 16, HorizontalAlignment: Center);
             Text: "Processing";
+        }
+
+        Label #ProgressLabel {
+            Style: (FontSize: 12);
+            Text: "Progress: 0%";
         }
     }
 }

@@ -550,26 +550,24 @@ All `.ui` files must be in `src/main/resources/Common/UI/Custom/`. The manifest 
 ### Correct .ui Syntax
 
 ```
-// Comments use double slashes
-@TextureVar = PatchStyle(TexturePath: "Common/UI/Custom/MyTexture.png");
-
 Group {
     LayoutMode: Center;
+    Anchor: (Width: 200, Height: 100);
 
     Group #panelId {
-        Background: @TextureVar;
-        Anchor: (Width: 176, Height: 166);
+        Background: #000000(0.8);
+        Anchor: (Width: 200, Height: 100);
+        Padding: (Horizontal: 10, Vertical: 10);
         LayoutMode: Top;
 
-        Label #labelId {
-            Style: (FontSize: 14, Alignment: Left);
-            Text: "Display Text";
-            Anchor: (Top: 6, Left: 8);
+        Label #titleLabel {
+            Style: (FontSize: 16, HorizontalAlignment: Center);
+            Text: "Title";
         }
 
-        Group #slotArea {
-            Anchor: (Top: 35, Left: 56, Width: 18, Height: 18);
-            Background: @SlotTexture;
+        Label #infoLabel {
+            Style: (FontSize: 12);
+            Text: "Info text";
         }
     }
 }
@@ -579,10 +577,35 @@ Group {
 
 - **NOT JSON**: Do not use `{}` with colons and commas like JSON. Use `Property: value;` syntax
 - **File extension**: Must be `.ui` only. Files like `.ui.json` will cause "Failed to load CustomUI documents" errors
-- **Elements**: `Group` (container/div), `Label` (text), `TextField` (input)
-- **Properties**: `Anchor` for positioning, `Background` for textures, `Style` for fonts, `LayoutMode` for layout
-- **Variables**: Define textures with `@VarName = PatchStyle(TexturePath: "path.png");`
-- **IDs**: Use `#elementId` after the element type
+- **Elements**: `Group` (container/div), `Label` (text), `TextField` (input), `Button`, `TextButton`
+- **Properties**: `Anchor` for positioning/size, `Background` for colors/textures, `Style` for fonts, `LayoutMode` for layout, `Padding` for spacing
+- **IDs**: Use `#elementId` after the element type to reference from Java
+
+### Backgrounds
+
+```
+// Solid color with opacity (0.0-1.0)
+Background: #000000(0.8);
+
+// Texture (relative path when in same folder)
+Background: "MyTexture.png";
+
+// Texture with border for 9-slice scaling
+Background: (TexturePath: "Common/ContainerPatch.png", Border: 20);
+```
+
+### Text Alignment
+
+**IMPORTANT**: `Alignment: Left` does NOT work. Use these instead:
+- `HorizontalAlignment: Center` / `Left` / `Right`
+- `VerticalAlignment: Center` / `Top` / `Bottom`
+
+```
+Label #myLabel {
+    Style: (FontSize: 16, HorizontalAlignment: Center, VerticalAlignment: Center);
+    Text: "Centered text";
+}
+```
 
 ### Opening Custom UI from Java
 
@@ -595,7 +618,7 @@ public class MachineUI extends BasicCustomUIPage {
     @Override
     public void build(UICommandBuilder commands) {
         commands.append("Common/UI/Custom/MachineUI.ui");
-        commands.set("#powerLabel", "Power: 100 W");  // Update dynamic elements
+        commands.set("#powerLabel", Message.raw("Power: 100 W"));  // Must use Message, not String
     }
 }
 
@@ -604,12 +627,29 @@ Player player = store.getComponent(ref, Player.getComponentType());
 player.getPageManager().openCustomPage(ref, store, new MachineUI(playerRef));
 ```
 
+### Reference Examples
+
+Extract Hytale's own .ui files from `Assets.zip` to see working examples:
+- `Common/UI/Custom/Common.ui` - Shared styles and components
+- `Common/UI/Custom/Hud/TimeLeft.ui` - Simple HUD example
+- `Common/UI/Custom/Pages/` - Page-based UI examples
+
+Use PowerShell to list/extract:
+```powershell
+# List .ui files
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::OpenRead('Assets.zip').Entries | Where-Object { $_.Name -like '*.ui' }
+```
+
 ### Troubleshooting
 
 | Error | Cause | Solution |
 |-------|-------|----------|
 | "Failed to load CustomUI documents" | Invalid .ui syntax or wrong file extension | Ensure files use CSS-like syntax, not JSON. Use only `.ui` extension |
+| "Could not resolve expression for property Alignment" | Using `Alignment: Left` | Use `HorizontalAlignment: Left` instead |
 | UI not appearing | File path wrong or not registered | Check path in `commands.append()`, ensure `IncludesAssetPack: true` |
+
+**Tip**: Enable **Diagnostic Mode** in Hytale client settings (under General) for detailed error messages with line numbers.
 
 ---
 
