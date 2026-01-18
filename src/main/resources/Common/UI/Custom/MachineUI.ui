@@ -1,63 +1,21 @@
-// Fabrica Machine UI - Base template for processing machines
-// Used by Macerator, Electric Furnace, etc.
-
-@SlotBackground = PatchStyle(TexturePath: "Common/UI/Custom/Slot_Background.png");
-@ProgressEmpty = PatchStyle(TexturePath: "Common/UI/Custom/ProgressArrow_Empty.png");
-@ProgressFull = PatchStyle(TexturePath: "Common/UI/Custom/ProgressArrow_Full.png");
-@MachineBackground = PatchStyle(TexturePath: "Common/UI/Custom/MachineGUI_Background.png");
-@EnergyEmpty = PatchStyle(TexturePath: "Common/UI/Custom/EnergyBar_Empty.png");
-@EnergyFull = PatchStyle(TexturePath: "Common/UI/Custom/EnergyBar_Full.png");
+@SlotBackground = PatchStyle(TexturePath: "Slot_Background.png");
+@ProgressEmpty = PatchStyle(TexturePath: "ProgressArrow_Empty.png");
+@EnergyEmpty = PatchStyle(TexturePath: "EnergyBar_Empty.png");
+@MachineBackground = PatchStyle(TexturePath: "MachineGUI_Background.png");
 
 Group {
     LayoutMode: Center;
+    Anchor: (Width: 176, Height: 166);
 
     Group #machinePanel {
         Background: @MachineBackground;
         Anchor: (Width: 176, Height: 166);
         LayoutMode: Top;
+        Padding: (Horizontal: 8, Vertical: 6);
 
-        // Title
         Label #machineTitle {
             Style: (FontSize: 14, Alignment: Left);
             Text: "Machine";
-            Anchor: (Top: 6, Left: 8);
-        }
-
-        // Input slot area
-        Group #inputArea {
-            Anchor: (Top: 35, Left: 56, Width: 18, Height: 18);
-            Background: @SlotBackground;
-        }
-
-        // Progress arrow
-        Group #progressBar {
-            Anchor: (Top: 35, Left: 80, Width: 24, Height: 16);
-            Background: @ProgressEmpty;
-        }
-
-        // Output slot area
-        Group #outputArea {
-            Anchor: (Top: 35, Left: 116, Width: 18, Height: 18);
-            Background: @SlotBackground;
-        }
-
-        // Energy bar
-        Group #energyBar {
-            Anchor: (Top: 8, Left: 152, Width: 16, Height: 52);
-            Background: @EnergyEmpty;
-        }
-
-        // Power info
-        Label #powerLabel {
-            Style: (FontSize: 10, Alignment: Left);
-            Text: "Power: 0 W";
-            Anchor: (Top: 60, Left: 8);
-        }
-
-        Label #energyLabel {
-            Style: (FontSize: 10, Alignment: Left);
-            Text: "Energy: 0 J";
-            Anchor: (Top: 72, Left: 8);
         }
     }
 }
