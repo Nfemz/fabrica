@@ -26,15 +26,15 @@ public class ProcessingUIPage extends BasicCustomUIPage {
 
     @Override
     public void build(@Nonnull UICommandBuilder commands) {
-        // Load the UI template (append to root)
-        commands.append("", "Common/UI/Custom/ProcessingGUI.ui");
+        // Load the UI template - use just filename per Hytale docs
+        commands.append("ProcessingGUI.ui");
 
         // Set the title based on machine type
-        commands.set("#Title", Message.raw(machine.getMachineTypeName()));
+        commands.set("#Title.TextSpans", Message.raw(machine.getMachineTypeName()));
 
         // Set progress
         int progressPercent = (int) (machine.getProgress() * 100);
         String powerConsumption = IPowerNetworkManager.formatPower(machine.getConsumptionRate());
-        commands.set("#ProgressLabel", Message.raw("Progress: " + progressPercent + "% | Power: " + powerConsumption));
+        commands.set("#ProgressLabel.TextSpans", Message.raw("Progress: " + progressPercent + "% | Power: " + powerConsumption));
     }
 }

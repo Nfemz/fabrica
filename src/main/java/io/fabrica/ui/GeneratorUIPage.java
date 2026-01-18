@@ -26,17 +26,17 @@ public class GeneratorUIPage extends BasicCustomUIPage {
 
     @Override
     public void build(@Nonnull UICommandBuilder commands) {
-        // Load the UI template (append to root)
-        commands.append("", "Common/UI/Custom/GeneratorGUI.ui");
+        // Load the UI template - use just filename per Hytale docs
+        commands.append("GeneratorGUI.ui");
 
-        // Set dynamic values
+        // Set dynamic values - use #ElementId.TextSpans for label text
         String powerOutput = IPowerNetworkManager.formatPower(generator.getCurrentProductionRate());
-        commands.set("#PowerLabel", Message.raw("Output: " + powerOutput));
+        commands.set("#PowerLabel.TextSpans", Message.raw("Output: " + powerOutput));
 
         // Show fuel info if available
         if (!generator.getFuelSlot().isEmpty()) {
             String fuelInfo = generator.getFuelSlot().getItemId() + " x" + generator.getFuelSlot().getCount();
-            commands.set("#Title", Message.raw("Generator - " + fuelInfo));
+            commands.set("#Title.TextSpans", Message.raw("Generator - " + fuelInfo));
         }
     }
 }

@@ -304,8 +304,11 @@ public class MachineUI extends BasicCustomUIPage {
 
     @Override
     public void build(UICommandBuilder commands) {
-        commands.append("Common/UI/Custom/MachineUI.ui");
-        commands.set("#powerLabel", Message.raw("Power: 100 W"));  // Must use Message, not String
+        // Use just the filename - files must be in Common/UI/Custom/
+        commands.append("MachineUI.ui");
+
+        // Use #ElementId.TextSpans to set label text (NOT .Text)
+        commands.set("#powerLabel.TextSpans", Message.raw("Power: 100 W"));
     }
 }
 
@@ -313,6 +316,23 @@ public class MachineUI extends BasicCustomUIPage {
 Player player = store.getComponent(ref, Player.getComponentType());
 player.getPageManager().openCustomPage(ref, store, new MachineUI(playerRef));
 ```
+
+### UICommandBuilder Methods
+
+| Method | Usage |
+|--------|-------|
+| `append(filename)` | Load a .ui file (just filename, not path) |
+| `set(selector, Message)` | Set element property using `#ElementId.Property` format |
+| `remove(selector)` | Remove an element |
+| `clear(selector)` | Clear element contents |
+
+### Common Selectors
+
+| Selector | Description |
+|----------|-------------|
+| `#LabelId.TextSpans` | Set Label text content (use with `Message.raw()`) |
+| `#ElementId.Visible` | Set element visibility (boolean) |
+| `#ElementId.Background` | Set background color/texture |
 
 ### Reference Examples
 

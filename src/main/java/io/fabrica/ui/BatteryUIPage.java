@@ -26,14 +26,14 @@ public class BatteryUIPage extends BasicCustomUIPage {
 
     @Override
     public void build(@Nonnull UICommandBuilder commands) {
-        // Load the UI template (append to root)
-        commands.append("", "Common/UI/Custom/BatteryGUI.ui");
+        // Load the UI template - use just filename per Hytale docs
+        commands.append("BatteryGUI.ui");
 
         // Set dynamic values
         int chargePercent = (int) (battery.getChargePercentage() * 100);
         String energyDisplay = IPowerNetworkManager.formatEnergy(battery.getStoredEnergy());
         String capacityDisplay = IPowerNetworkManager.formatEnergy(battery.getMaxCapacity());
 
-        commands.set("#ChargeLabel", Message.raw("Charge: " + chargePercent + "% (" + energyDisplay + " / " + capacityDisplay + ")"));
+        commands.set("#ChargeLabel.TextSpans", Message.raw("Charge: " + chargePercent + "% (" + energyDisplay + " / " + capacityDisplay + ")"));
     }
 }

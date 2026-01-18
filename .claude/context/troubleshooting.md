@@ -48,6 +48,10 @@ Check client logs at: `%APPDATA%/Hytale/UserData/Logs/`
 | No block preview in hand | Missing PlayerAnimationsId | Add `"PlayerAnimationsId": "Block"` at the item level (not inside BlockType) |
 | "Failed to load CustomUI documents" | Invalid .ui syntax or wrong file extension | Ensure files use CSS-like syntax (not JSON), use only `.ui` extension |
 | "Could not resolve expression for property Alignment" | Using `Alignment: Left` in .ui | Use `HorizontalAlignment: Left` instead |
+| "Could not find document X for Custom UI Append command" | Wrong path format in `append()` | Use just filename: `commands.append("MyUI.ui")`, not full path |
+| "Value cannot be null. (Parameter 'element')" | Element selector not found | Verify element ID exists in .ui file, use `#ElementId.Property` format |
+| "CustomUI Set command couldn't set value" | Wrong property name in selector | For Label text, use `.TextSpans` not `.Text`: `#Label.TextSpans` |
+| "Index was outside the bounds of the array" | Using two-arg `append(selector, path)` incorrectly | Use single-arg `append(filename)` instead |
 
 ## Debugging Tips
 
