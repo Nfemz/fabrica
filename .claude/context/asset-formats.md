@@ -230,6 +230,8 @@ Recipes can also be embedded directly in item definitions:
 
 Hytale uses `.ui` files for custom user interfaces. These files use a **CSS/HTML-like syntax, NOT JSON**.
 
+**Reference**: https://hytalemodding.dev/en/docs/guides/plugin/ui
+
 ### File Location
 
 All `.ui` files must be in `src/main/resources/Common/UI/Custom/`. The manifest must have `"IncludesAssetPack": true`.
@@ -238,59 +240,100 @@ All `.ui` files must be in `src/main/resources/Common/UI/Custom/`. The manifest 
 
 ```
 Group {
-    LayoutMode: Center;
-    Anchor: (Width: 200, Height: 100);
+  LayoutMode: Center;
 
-    Group #panelId {
-        Background: #000000(0.8);
-        Anchor: (Width: 200, Height: 100);
-        Padding: (Horizontal: 10, Vertical: 10);
-        LayoutMode: Top;
+  Group #MyPanel {
+    Background: #000000(0.85);
+    Anchor: (Width: 260, Height: 180);
+    Padding: (Left: 12, Right: 12, Top: 12, Bottom: 12);
+    LayoutMode: Top;
+    OutlineColor: #93844c(0.5);
+    OutlineSize: 1.5;
 
-        Label #titleLabel {
-            Style: (FontSize: 16, HorizontalAlignment: Center);
-            Text: "Title";
-        }
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 24);
 
-        Label #infoLabel {
-            Style: (FontSize: 12);
-            Text: "Info text";
-        }
+      Label {FlexWeight: 1;}
+
+      Label #Title {
+        Style: (FontSize: 18, TextColor: #93844c, RenderBold: true);
+        Text: "My Title";
+      }
+
+      Label {FlexWeight: 1;}
     }
+
+    Label #InfoLabel {
+      Style: (FontSize: 12, TextColor: #aaaaaa);
+      Text: "Info text";
+    }
+  }
 }
 ```
 
 ### Key Rules
 
-- **NOT JSON**: Do not use `{}` with colons and commas like JSON. Use `Property: value;` syntax
-- **File extension**: Must be `.ui` only. Files like `.ui.json` will cause "Failed to load CustomUI documents" errors
-- **Elements**: `Group` (container/div), `Label` (text), `TextField` (input), `Button`, `TextButton`
-- **Properties**: `Anchor` for positioning/size, `Background` for colors/textures, `Style` for fonts, `LayoutMode` for layout, `Padding` for spacing
+- **NOT JSON**: Do not use `{}` with colons and commas like JSON
+- **File extension**: Must be `.ui` only
+- **Elements**: `Group`, `Label`, `TextField`, `Button`, `TextButton`, `ProgressBar`
 - **IDs**: Use `#elementId` after the element type to reference from Java
 
-### Backgrounds
+### Available Properties
+
+| Property | Syntax | Example |
+|----------|--------|---------|
+| `Background` | Color or texture | `#000000(0.8)` or `"path/texture.png"` |
+| `Anchor` | Positioning/size | `(Width: 200, Height: 100, Top: 10)` |
+| `Padding` | Spacing | `(Left: 10, Right: 10, Top: 5, Bottom: 5)` |
+| `LayoutMode` | Child layout | `Top`, `Left`, `Center`, `TopScrolling` |
+| `Style` | Text styling | `(FontSize: 16, TextColor: #fff, RenderBold: true)` |
+| `OutlineColor` | Border color | `#93844c(0.5)` |
+| `OutlineSize` | Border width | `1.5` |
+| `FlexWeight` | Flexible sizing | `1` |
+| `Text` | Label content | `"My Text"` |
+
+### Text Centering Pattern
+
+Use `FlexWeight` with empty Labels to center content:
 
 ```
-// Solid color with opacity (0.0-1.0)
-Background: #000000(0.8);
+Group {
+  LayoutMode: Left;
 
-// Texture (relative path when in same folder)
-Background: "MyTexture.png";
+  Label {FlexWeight: 1;}
 
-// Texture with border for 9-slice scaling
-Background: (TexturePath: "Common/ContainerPatch.png", Border: 20);
+  Label #CenteredText {
+    Style: (FontSize: 16, TextColor: #ffffff);
+    Text: "Centered!";
+  }
+
+  Label {FlexWeight: 1;}
+}
 ```
 
-### Text Alignment
-
-**IMPORTANT**: `Alignment: Left` does NOT work. Use these instead:
-- `HorizontalAlignment: Center` / `Left` / `Right`
-- `VerticalAlignment: Center` / `Top` / `Bottom`
+### ProgressBar Element
 
 ```
-Label #myLabel {
-    Style: (FontSize: 16, HorizontalAlignment: Center, VerticalAlignment: Center);
-    Text: "Centered text";
+Group {
+  Anchor: (Height: 8);
+  Background: "Common/ProgressBar.png";
+
+  ProgressBar #MyBar {
+    BarTexturePath: "Common/ProgressBarFill.png";
+    Value: 0.5;
+  }
+}
+```
+
+### Variables & Includes
+
+```
+$Common = "../Common.ui";
+@MyStyle = PatchStyle(TexturePath: "MyBackground.png");
+
+$Common.@PageOverlay {
+  Background: @MyStyle;
 }
 ```
 
@@ -331,10 +374,11 @@ player.getPageManager().openCustomPage(ref, store, new MachineUI(playerRef));
 | Selector | Description |
 |----------|-------------|
 | `#LabelId.TextSpans` | Set Label text content (use with `Message.raw()`) |
-| `#ElementId.Visible` | Set element visibility (boolean) |
-| `#ElementId.Background` | Set background color/texture |
+| `#ProgressBarId.Value` | Set ProgressBar value (0.0 to 1.0) |
 
 ### Reference Examples
+
+- **AdminUI Plugin**: https://github.com/Buuz135/AdminUI - Working UI examples
 
 Extract Hytale's own .ui files from `Assets.zip` to see working examples:
 - `Common/UI/Custom/Common.ui` - Shared styles and components

@@ -1,21 +1,190 @@
 Group {
-    LayoutMode: Center;
-    Anchor: (Width: 200, Height: 100);
+  LayoutMode: Center;
 
-    Group #GeneratorPanel {
-        Background: #000000(0.8);
-        Anchor: (Width: 200, Height: 100);
-        Padding: (Horizontal: 10, Vertical: 10);
+  Group #GeneratorPanel {
+    Background: #000000(0.85);
+    Anchor: (Width: 260, Height: 180);
+    Padding: (Left: 12, Right: 12, Top: 12, Bottom: 12);
+    LayoutMode: Top;
+    OutlineColor: #93844c(0.5);
+    OutlineSize: 1.5;
+
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 24);
+
+      Label {FlexWeight: 1;}
+
+      Label #Title {
+        Style: (FontSize: 18, TextColor: #93844c, RenderBold: true);
+        Text: "Generator";
+      }
+
+      Label {FlexWeight: 1;}
+    }
+
+    Group #ContentRow {
+      Anchor: (Height: 100, Top: 8);
+      LayoutMode: Left;
+
+      Group #FuelSection {
+        Anchor: (Width: 70);
         LayoutMode: Top;
 
-        Label #Title {
-            Style: (FontSize: 16, HorizontalAlignment: Center);
-            Text: "Generator";
+        Group {
+          LayoutMode: Left;
+          Anchor: (Height: 14);
+
+          Label {FlexWeight: 1;}
+
+          Label {
+            Style: (FontSize: 10, TextColor: #93844c);
+            Text: "FUEL";
+          }
+
+          Label {FlexWeight: 1;}
         }
 
-        Label #PowerLabel {
-            Style: (FontSize: 12);
-            Text: "Output: 0 W";
+        Group #FuelSlot {
+          Background: #333333(0.8);
+          Anchor: (Width: 48, Height: 48, Top: 4);
+          OutlineColor: #555555(0.8);
+          OutlineSize: 1;
+          Padding: (Left: 4, Right: 4, Top: 4, Bottom: 4);
+          LayoutMode: Top;
+
+          Group {
+            LayoutMode: Left;
+            FlexWeight: 1;
+
+            Label {FlexWeight: 1;}
+
+            Label #FuelItemLabel {
+              Style: (FontSize: 9, TextColor: #aaaaaa);
+              Text: "Empty";
+            }
+
+            Label {FlexWeight: 1;}
+          }
+
+          Group {
+            LayoutMode: Left;
+
+            Label {FlexWeight: 1;}
+
+            Label #FuelCountLabel {
+              Style: (FontSize: 10, TextColor: #ffffff, RenderBold: true);
+              Text: "";
+            }
+          }
         }
+
+        Group #BurnIndicator {
+          Anchor: (Width: 48, Height: 24, Top: 4);
+          LayoutMode: Left;
+
+          Label {FlexWeight: 1;}
+
+          Group #BurnProgressBar {
+            Background: #ff6600(0.8);
+            Anchor: (Width: 16, Height: 16);
+          }
+
+          Label {FlexWeight: 1;}
+        }
+      }
+
+      Group #ArrowSection {
+        Anchor: (Width: 50);
+        LayoutMode: Top;
+
+        Label {FlexWeight: 1;}
+
+        Group #StatusIndicator {
+          Background: #00ff00(0.6);
+          Anchor: (Width: 24, Height: 24);
+          OutlineColor: #00aa00(0.8);
+          OutlineSize: 1;
+        }
+
+        Label {FlexWeight: 1;}
+      }
+
+      Group #EnergySection {
+        Anchor: (Width: 100);
+        LayoutMode: Top;
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Height: 14);
+
+          Label {FlexWeight: 1;}
+
+          Label {
+            Style: (FontSize: 10, TextColor: #93844c);
+            Text: "ENERGY";
+          }
+
+          Label {FlexWeight: 1;}
+        }
+
+        Group #EnergyBarContainer {
+          Anchor: (Width: 80, Height: 50, Top: 4);
+          LayoutMode: Left;
+
+          Label {FlexWeight: 1;}
+
+          Group #EnergyBarBackground {
+            Background: #222222(0.8);
+            Anchor: (Width: 20, Height: 44);
+            OutlineColor: #444444(0.8);
+            OutlineSize: 1;
+
+            Group #EnergyBar {
+              Background: #00aaff(0.8);
+              Anchor: (Width: 18, Height: 40, Left: 1, Top: 2);
+            }
+          }
+
+          Label {FlexWeight: 1;}
+        }
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Height: 14, Top: 4);
+
+          Label {FlexWeight: 1;}
+
+          Label #EnergyLabel {
+            Style: (FontSize: 9, TextColor: #aaaaaa);
+            Text: "0 / 1000 J";
+          }
+
+          Label {FlexWeight: 1;}
+        }
+      }
     }
+
+    Group #OutputRow {
+      Anchor: (Height: 24, Top: 4);
+      LayoutMode: Left;
+
+      Label {FlexWeight: 1;}
+
+      Group #PowerIndicator {
+        Background: #ffaa00(0.6);
+        Anchor: (Width: 12, Height: 12);
+        OutlineColor: #aa7700(0.8);
+        OutlineSize: 1;
+      }
+
+      Label #PowerLabel {
+        Anchor: (Left: 8);
+        Style: (FontSize: 14, TextColor: #ffffff, RenderBold: true);
+        Text: "0 W";
+      }
+
+      Label {FlexWeight: 1;}
+    }
+  }
 }
