@@ -1,5 +1,19 @@
 # Hytale Plugin API Reference
 
+> **Quick Reference**: This file provides a concise API overview.
+> For comprehensive documentation, see [api-index.md](api-index.md).
+
+## Detailed Documentation
+
+| Package | Link | Description |
+|---------|------|-------------|
+| Plugin System | [packages/server/core/plugin/](packages/server/core/plugin/_index.md) | JavaPlugin, registries, lifecycle |
+| Commands | [packages/server/core/command/](packages/server/core/command/_index.md) | Command framework |
+| Events | [packages/event/](packages/event/_index.md) | Event system |
+| ECS | [packages/component/](packages/component/_index.md) | Entity Component System |
+
+---
+
 ## Plugin Lifecycle
 
 Plugins extend `JavaPlugin` (`com.hypixel.hytale.server.core.plugin.JavaPlugin`):

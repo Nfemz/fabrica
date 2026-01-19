@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "jar_version": "Early Access",
+    "jar_path": "/mnt/c/Users/femia/AppData/Roaming/Hytale/install/release/package/game/latest/Server/HytaleServer.jar",
+    "total_hytale_classes": 7154,
+    "last_updated": "2026-01-19"
+  },
+  "packages": {
+    "server.core.plugin": {
+      "status": "complete",
+      "classes_total": 33,
+      "classes_documented": 10,
+      "priority": "critical",
+      "description": "Plugin lifecycle, JavaPlugin base class, registries",
+      "notes": "Core plugin classes documented."
+    },
+    "server.core.command": {
+      "status": "complete",
+      "classes_total": 337,
+      "classes_documented": 15,
+      "priority": "critical",
+      "description": "Command framework, argument types, built-in commands",
+      "notes": "Core command system documented. Built-in commands (~220) not individually documented as they serve as reference examples."
+    },
+    "event": {
+      "status": "not_started",
+      "classes_total": 23,
+      "classes_documented": 0,
+      "priority": "critical",
+      "description": "Event system base classes"
+    },
+    "component": {
+      "status": "not_started",
+      "classes_total": 106,
+      "classes_documented": 0,
+      "priority": "critical",
+      "description": "ECS system - Store, Ref, Query"
+    },
+    "server.core.entity": {
+      "status": "not_started",
+      "classes_total": 92,
+      "classes_documented": 0,
+      "priority": "high",
+      "description": "Entity system, Player class"
+    },
+    "server.core.ui": {
+      "status": "not_started",
+      "classes_total": 20,
+      "classes_documented": 0,
+      "priority": "high",
+      "description": "Custom UI pages"
+    },
+    "server.core.universe.world": {
+      "status": "not_started",
+      "classes_total": 294,
+      "classes_documented": 0,
+      "priority": "high",
+      "description": "World access, chunks, blocks"
+    },
+    "protocol.packets": {
+      "status": "not_started",
+      "classes_total": 354,
+      "classes_documented": 0,
+      "priority": "high",
+      "description": "Network protocol packets"
+    },
+    "server.core.asset": {
+      "status": "not_started",
+      "classes_total": 150,
+      "classes_documented": 0,
+      "priority": "medium",
+      "description": "Asset loading and management"
+    },
+    "server.core.modules": {
+      "status": "not_started",
+      "classes_total": 400,
+      "classes_documented": 0,
+      "priority": "medium",
+      "description": "Built-in systems (damage, physics, interaction)"
+    }
+  },
+  "documented_classes": [
+    "server.core.plugin.JavaPlugin",
+    "server.core.plugin.JavaPluginInit",
+    "server.core.plugin.PluginBase",
+    "server.core.plugin.PluginManager",
+    "server.core.plugin.PluginState",
+    "server.core.plugin.PluginType",
+    "server.core.plugin.registry.IRegistry",
+    "server.core.plugin.registry.AssetRegistry",
+    "server.core.plugin.registry.CodecMapRegistry",
+    "server.core.plugin.registry.MapKeyMapRegistry",
+    "server.core.command.system.AbstractCommand",
+    "server.core.command.system.CommandRegistry",
+    "server.core.command.system.CommandContext",
+    "server.core.command.system.CommandSender",
+    "server.core.command.system.basecommands.CommandBase",
+    "server.core.command.system.basecommands.AbstractAsyncCommand",
+    "server.core.command.system.basecommands.AbstractPlayerCommand",
+    "server.core.command.system.arguments.system.RequiredArg",
+    "server.core.command.system.arguments.system.OptionalArg",
+    "server.core.command.system.arguments.system.DefaultArg",
+    "server.core.command.system.arguments.system.FlagArg",
+    "server.core.command.system.arguments.types.ArgTypes",
+    "server.core.command.system.arguments.types.ArgumentType"
+  ],
+  "summary": {
+    "critical_packages": 4,
+    "critical_classes": 499,
+    "critical_documented": 25,
+    "high_packages": 4,
+    "high_classes": 760,
+    "high_documented": 0,
+    "overall_documented": 25,
+    "overall_percentage": 1.4
+  }
+}
